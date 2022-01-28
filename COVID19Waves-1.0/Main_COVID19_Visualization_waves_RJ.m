@@ -75,8 +75,20 @@ Data_Deaths = data_deaths; % deaths by event ocurrency
 
 % cumulative number of events (prevalence)
 Data_Cases_cum  = cumsum(Data_Cases);
-%Data_Cases_cum  = cumsum(Data_Cases);
 Data_Deaths_cum = cumsum(Data_Deaths);
+
+% number of new events per week (incidence)
+Data_Cases_w  = zeros(2*52,1);
+Data_Deaths_w = zeros(2*52,1);
+for i=1:2*52
+    idx = (7*i-6):(7*i);
+    Data_Cases_w(i)  = sum(Data_Cases(idx));
+    Data_Deaths_w(i) = sum(Data_Deaths(idx));
+end
+
+% cumulative number of events (prevalence)
+Data_Cases_cum_w  = cumsum(Data_Cases_w);
+Data_Deaths_cum_w = cumsum(Data_Deaths_w);
 
 % dataset size
 N_data = length(Data_Cases);
@@ -102,6 +114,13 @@ Data_Deaths_MA = movmean(Data_Deaths,[6 0]);
 
 Data_Cases_cum_MA  = cumsum(Data_Cases_MA);
 Data_Deaths_cum_MA = cumsum(Data_Deaths_MA);
+
+Data_Cases_MA_w  = movmean(Data_Cases_w ,[4 0]);
+Data_Deaths_MA_w = movmean(Data_Deaths_w,[4 0]);
+
+Data_Cases_cum_MA_w  = cumsum(Data_Cases_MA_w);
+Data_Deaths_cum_MA_w = cumsum(Data_Deaths_MA_w);
+
 toc
 % -----------------------------------------------------------
 
@@ -131,6 +150,7 @@ MyGray = [0.8 0.8 0.8];
 % ..........................................................
 label_data  = ' surveillance data';
 label_MA    = ' 7d moving average';
+label_MAw   = ' 4w moving average';
 label_end   = ' delayed data     ';
 % ..........................................................
 
@@ -176,16 +196,16 @@ saveas(gcf,gname,'epsc2');
 
 % ..........................................................
 figure(3)
-fig3a = loglog(Data_Cases_cum(90:end),Data_Cases(90:end)   ,'om','LineWidth',1);
+fig3a = loglog(Data_Cases_cum_w,Data_Cases_w   ,'om','LineWidth',1);
 hold on
-fig3b = loglog(Data_Cases_cum_MA(90:end),Data_Cases_MA(90:end),'.-g','LineWidth',3);
+fig3b = loglog(Data_Cases_cum_MA_w,Data_Cases_MA_w,'.-g','LineWidth',3);
 hold off
 set(fig3a,'DisplayName',label_data );
-set(fig3b,'DisplayName',label_MA   );
+set(fig3b,'DisplayName',label_MAw  );
 leg = [fig3a; fig3b];
 leg = legend(leg,'Location','Best');
 xlabel('total reported cases');
-ylabel('new reported cases per day');
+ylabel('new reported cases per week');
 xlim([1e3 1e6]); ylim([1 1e4]);
 set(leg,'FontSize',18);
 set(0,'DefaultAxesFontSize',18);
@@ -195,18 +215,18 @@ saveas(gcf,gname,'epsc2');
 
 
 
-% ..........................................................
+% .......................................................... 90:end
 figure(4)
-fig4a = loglog(Data_Deaths_cum(90:end),Data_Deaths(90:end)   ,'om','LineWidth',1);
+fig4a = loglog(Data_Deaths_cum_w,Data_Deaths_w ,'om','LineWidth',1);
 hold on
-fig4b = loglog(Data_Deaths_cum_MA(90:end),Data_Deaths_MA(90:end),'.-g','LineWidth',3);
+fig4b = loglog(Data_Deaths_cum_MA_w,Data_Deaths_MA_w,'.-g','LineWidth',3);
 hold off
 set(fig4a,'DisplayName',label_data );
-set(fig4b,'DisplayName',label_MA   );
+set(fig4b,'DisplayName',label_MAw  );
 leg = [fig4a; fig4b];
 leg = legend(leg,'Location','Best');
 xlabel('total reported deaths');
-ylabel('new reported deaths per day');
+ylabel('new reported deaths per week');
 xlim([1e2 1e5]); ylim([1 1e3]);
 set(leg,'FontSize',18);
 set(0,'DefaultAxesFontSize',18);
