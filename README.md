@@ -17,7 +17,7 @@ We ask the code users to cite the following manuscript in any publications repor
 
 ```
 @article{COVID19Waves2022,
-   author  = {P. R. L. {Gianfelice et al.}},
+   author  = {P. R. L. Gianfelice and R S Oyarzabal and A {Cunha~Jr} and J M V Grzybowsk and F C Batista and E E N Macau},
    title   = {The starting dates of COVID-19 multiple waves},
    journal = {PrePrint},
    year    = {2022},
