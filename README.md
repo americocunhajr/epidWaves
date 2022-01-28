@@ -1,42 +1,34 @@
 <img src="logo/HarvesterOpt.png" width="40%">
 
-**HarvesterOpt - Harvester Optimizer** is an easy-to-run code to solve an optimization problem to maximize the energy recovered by a bistable piezo-magneto-elastic energy harvesting system. The implementation follows an educational style, to make its use very intuitive. 
+**COVID19_MultiWaves** repository stores a set of Matlab codes that can be used to fit a multi-wave statistical model to the complex data arising from the COVID-19 epidemic dynamics. The repository also contains data referring to a case study involving the city of Rio de Janeiro in Brazil. More details in the following paper:
+- *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, 2022*
 
-This package includes the following files:
-
-## Software History
-
-This code was developed to optimize the amount of energy recovered by a nonlinear bistable piezoelectric energy harvester. The simulation results associated with this optimization process are reported in the following paper:
-- *Americo Cunha Jr, Enhancing the performance of a bistable energy harvesting device via the cross-entropy method, 2020*
-https://hal.archives-ouvertes.fr/hal-01531845v3
-
-## Videos
-Animations illustrating the operation of the CE method can be seen in the following playlist:
-- https://www.youtube.com/playlist?list=PLjNDdMKtfqVnU4QIubzpeE25szNEbEdBZ
-
-
-## Author
-- Americo Cunha
+## Authors
+- Paulo Roberto de Lima Gianfelice
+- Ricardo Sovek Oyarzabal
+- Americo Cunha Jr
+- Jose Mario Vicensi Grzybowsk
+- Fernando da Conceição Batista
+- Elbert E. N. Macau
 
 ## Citing this study
-We ask the code users to cite the following manuscript in any publications reporting work done with **HarvesterOpt**:
-- *A. Cunha Jr, Enhancing the performance of a bistable energy harvesting device via the cross-entropy method, 2020*
-https://hal.archives-ouvertes.fr/hal-01531845v3
+We ask the code users to cite the following manuscript in any publications reporting work done with our code:
+- *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, 2022*
 
 ```
 @article{CunhaJr2021,
    author  = {A. {Cunha~Jr}},
-   title   = {Enhancing the performance of a bistable energy harvesting device via the cross-entropy method},
-   journal = {Nonlinear Dynamics},
-   year    = {2021},
+   title   = {The starting dates of COVID-19 multiple waves},
+   journal = {PrePrint},
+   year    = {2022},
    volume  = {~},
    pages   = {~},
-   note    = {https://doi.org/10.1007/s11071-020-06109-0},
+   note    = {~},
 }
 ```
 
 ## License
-**HarvesterOpt** is released under the MIT license. See the LICENSE file for details. All new contributions must be made under the MIT license.
+**COVID19_MultiWaves** is released under the MIT license. See the LICENSE file for details. All new contributions must be made under the MIT license.
 
 ## Funding
 
