@@ -16,8 +16,8 @@ We ask the code users to cite the following manuscript in any publications repor
 - *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, 2022*
 
 ```
-@article{CunhaJr2021,
-   author  = {A. {Cunha~Jr}},
+@article{COVID19Waves2022,
+   author  = {P. R. L. {Gianfelice et al.}},
    title   = {The starting dates of COVID-19 multiple waves},
    journal = {PrePrint},
    year    = {2022},
