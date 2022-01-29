@@ -141,97 +141,84 @@ disp(' ');
 time = linspace(DateStart,DateEnd,length(time))';
 % ..........................................................
 
-% custom colors
-% ..........................................................
-MyGray = [0.8 0.8 0.8];
-% ..........................................................
 
-% legend labels
+% Figure 1 - incidence cases
 % ..........................................................
-label_data  = ' surveillance data';
-label_MA    = ' 7d moving average';
-label_MAw   = ' 4w moving average';
-label_end   = ' delayed data     ';
-% ..........................................................
+graphobj.gname  = [num2str(case_name),'__cases'];
+graphobj.gtitle = '';
+graphobj.leg1   = ' surveillance data';
+graphobj.leg2   = ' 7d moving average';
+graphobj.xmin   = DateStart;
+graphobj.xmax   = DateEnd;
+graphobj.ymin   = 0;
+graphobj.ymax   = 2500;
+graphobj.xlab   = [];
+graphobj.ylab   = 'new reported cases per day';
+graphobj.flag   = 'eps';
 
-% ..........................................................
-figure(1)
-fig1a = plot(time,Data_Cases   ,'om','LineWidth',1);
-hold on
-fig1b = plot(time,Data_Cases_MA,'.-g','LineWidth',3);
-hold off
-set(fig1a,'DisplayName',label_data );
-set(fig1b,'DisplayName',label_MA   );
-leg = [fig1a; fig1b];
-leg = legend(leg,'Location','Best');
-ylabel('new reported cases per day');
-datetick('x',28,'keeplimits');
-xlim([DateStart DateEnd]); %ylim([0 600]);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__cases'];
-saveas(gcf,gname,'epsc2');
+fig1 = graph_I_raw(time,Data_Cases,...
+                        Data_Cases_MA,...
+                        graphobj);
 % ..........................................................
 
 
+% Figure 2 - incidence deaths
 % ..........................................................
-figure(2)
-fig2a = plot(time,Data_Deaths  ,'om','LineWidth',1);
-hold on
-fig2b = plot(time,Data_Deaths_MA,'.-g','LineWidth',3);
-hold off
-set(fig2a,'DisplayName',label_data );
-set(fig2b,'DisplayName',label_MA   );
-leg = [fig2a; fig2b];
-leg = legend(leg,'Location','Best');
-ylabel('new reported deaths per day');
-datetick('x',28,'keeplimits');
-xlim([DateStart DateEnd]); %ylim([0 300]);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__deaths'];
-saveas(gcf,gname,'epsc2');
-% ..........................................................
+graphobj.gname  = [num2str(case_name),'__deaths'];
+graphobj.gtitle = '';
+graphobj.leg1   = ' surveillance data';
+graphobj.leg2   = ' 7d moving average';
+graphobj.xmin   = DateStart;
+graphobj.xmax   = DateEnd;
+graphobj.ymin   = 0;
+graphobj.ymax   = 160;
+graphobj.xlab   = [];
+graphobj.ylab   = 'new reported deaths per day';
+graphobj.flag   = 'eps';
 
-
-% ..........................................................
-figure(3)
-fig3a = loglog(Data_Cases_cum_w,Data_Cases_w   ,'om','LineWidth',1);
-hold on
-fig3b = loglog(Data_Cases_cum_MA_w,Data_Cases_MA_w,'.-g','LineWidth',3);
-hold off
-set(fig3a,'DisplayName',label_data );
-set(fig3b,'DisplayName',label_MAw  );
-leg = [fig3a; fig3b];
-leg = legend(leg,'Location','Best');
-xlabel('total reported cases');
-ylabel('new reported cases per week');
-xlim([1e3 1e6]); ylim([1 1e4]);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__total_vs_new_cases'];
-saveas(gcf,gname,'epsc2');
+fig2 = graph_I_raw(time,Data_Deaths,...
+                        Data_Deaths_MA,...
+                        graphobj);
 % ..........................................................
 
 
+% Figure 3 - incidence vs prevalence cases
+% ..........................................................
+graphobj.gname  = [num2str(case_name),'__total_vs_new_cases'];
+graphobj.gtitle = '';
+graphobj.leg1   = ' surveillance data';
+graphobj.leg2   = ' 4w moving average';
+graphobj.xmin   = 1e3;
+graphobj.xmax   = 1e6;
+graphobj.ymin   = 1e0;
+graphobj.ymax   = 1e4;
+graphobj.xlab   = 'total reported cases';
+graphobj.ylab   = 'new reported cases per week';
+graphobj.flag   = 'eps';
 
-% .......................................................... 90:end
-figure(4)
-fig4a = loglog(Data_Deaths_cum_w,Data_Deaths_w ,'om','LineWidth',1);
-hold on
-fig4b = loglog(Data_Deaths_cum_MA_w,Data_Deaths_MA_w,'.-g','LineWidth',3);
-hold off
-set(fig4a,'DisplayName',label_data );
-set(fig4b,'DisplayName',label_MAw  );
-leg = [fig4a; fig4b];
-leg = legend(leg,'Location','Best');
-xlabel('total reported deaths');
-ylabel('new reported deaths per week');
-xlim([1e2 1e5]); ylim([1 1e3]);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__total_vs_new_deaths'];
-saveas(gcf,gname,'epsc2');
+fig3 = graph_I_vs_C_raw(Data_Cases_cum_w   ,Data_Cases_w,...
+                        Data_Cases_cum_MA_w,Data_Cases_MA_w,...
+                        graphobj);
+% ..........................................................
+
+
+% Figure 4 - incidence vs prevalence deaths
+% ..........................................................
+graphobj.gname  = [num2str(case_name),'__total_vs_new_deaths'];
+graphobj.gtitle = '';
+graphobj.leg1   = ' surveillance data';
+graphobj.leg2   = ' 4w moving average';
+graphobj.xmin   = 1e2;
+graphobj.xmax   = 1e5;
+graphobj.ymin   = 1e0;
+graphobj.ymax   = 1e3;
+graphobj.xlab   = 'total reported deaths';
+graphobj.ylab   = 'new reported deaths per week';
+graphobj.flag   = 'eps';
+
+fig4 = graph_I_vs_C_raw(Data_Deaths_cum_w   ,Data_Deaths_w,...
+                        Data_Deaths_cum_MA_w,Data_Deaths_MA_w,...
+                        graphobj);
 % ..........................................................
 
 toc

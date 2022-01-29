@@ -252,50 +252,31 @@ time    = linspace(DateStart,DateEnd,length(time))';
 tau_ast = DateStart + tau_ast;
 % ..........................................................
 
-% custom colors
-% ..........................................................
-MyGray = [0.8 0.8 0.8];
-% ..........................................................
 
-% legend labels
+% Figure 1 - incidence of deaths
 % ..........................................................
-label_data  = ' surveillance data';
-label_MA    = ' 7d moving average';
-label_model = ' statistical model';
-label_env   = ' 95% confidence   ';
-% ..........................................................
+graphobj.gname  = [num2str(case_name),'__I_vs_time_tau_6w'];
+graphobj.gtitle = '';
+graphobj.leg1   = ' surveillance data';
+graphobj.leg2   = ' 7d moving average';
+graphobj.leg3   = ' statistical model';
+graphobj.leg4   = ' 95% confidence   ';
+graphobj.xmin   = DateStart;
+graphobj.xmax   = DateEnd;
+graphobj.ymin   = 0;
+graphobj.ymax   = 250;
+graphobj.tauy   = 0.7;
+graphobj.xlab   = [];
+graphobj.ylab   = 'total reported deaths';
+graphobj.flag   = 'eps';
 
-
-% ..........................................................
-figure(1)
-%ymax = max(Imax,max(MyFit_I_env(:,2)));
-ymax = 250;
-fig2a = fill([time' fliplr(time')],...
-             [MyFit_I_env(:,2)' fliplr(MyFit_I_env(:,1)')],MyGray);
-hold on
-fig2b = plot(time,Data_I_raw  ,'o-m','LineWidth',1);
-fig2c = plot(time,Data_I_MA   ,'.-g','LineWidth',3);
-fig2d = plot(time,MyFit_I_pred,' -b','LineWidth',3);
-fig2e = plot([tau_ast(1) tau_ast(1)],[0 0.65*ymax],'--k','LineWidth',2);
-fig2f = plot([tau_ast(2) tau_ast(2)],[0 0.65*ymax],'--k','LineWidth',2);
-fig2g = plot([tau_ast(3) tau_ast(3)],[0 0.65*ymax],'--k','LineWidth',2);
-fig2h = plot([tau_ast(4) tau_ast(4)],[0 0.65*ymax],'--k','LineWidth',2);
-fig2i = plot([tau_ast(5) tau_ast(5)],[0 0.65*ymax],'--k','LineWidth',2);
-fig2j = plot([tau_ast(6) tau_ast(6)],[0 0.65*ymax],'--k','LineWidth',2);
-hold off
-set(fig2a,'DisplayName',label_env  );
-set(fig2b,'DisplayName',label_data );
-set(fig2c,'DisplayName',label_MA   );
-set(fig2d,'DisplayName',label_model);
-leg = [fig2b; fig2c; fig2d];
-leg = legend(leg,'Location','Best');
-ylabel('new reported deaths per day');
-datetick('x',28,'keeplimits');
-xlim([DateStart DateEnd]); ylim([0 ymax]);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__I_vs_time_tau_6w'];
-saveas(gcf,gname,'epsc2');
+fig1 = graph_I_6w(time,Data_I_raw,...
+                       Data_I_MA,...
+                       MyFit_I_env(:,2),...
+                       MyFit_I_env(:,1),...
+                       MyFit_I_pred,...
+                       tau_ast,...
+                       graphobj);
 % ..........................................................
 
 toc

@@ -66,8 +66,10 @@ disp(' ');
 load('COVID19_Data_RJ_Jan_01_2020_to_Dec_31_2021.mat')
 
 % range of dates
-DateStart = datenum('07-01-2021');
-DateEnd   = datenum('01-01-2022');
+DateStart  = datenum('07-01-2021');
+DateEnd    = datenum('01-01-2022');
+TrainStart = datenum('08-01-2021');
+TrainEnd   = datenum('12-01-2021');
 
 % indices to access the dates
 % Jan 1, 2020 -   1   |   Jan 1, 2021 - 367
@@ -238,81 +240,62 @@ disp(' ');
 
 % adjust time vector for date format
 % ..........................................................
-time = linspace(DateStart,DateEnd,length(time))';
+time       = linspace(DateStart,DateEnd,length(time))';
+time_train = linspace(TrainStart,TrainEnd,length(time_train))';
 % ..........................................................
 
-% custom colors
-% ..........................................................
-MyGray = [0.8 0.8 0.8];
-% ..........................................................
 
 % legend labels
 % ..........................................................
-label_data  = ' surveillance data';
-label_MA    = ' 7d moving average';
-label_model = ' statistical model';
-label_env   = ' 95% confidence   ';
+graphobj.leg1 = ' surveillance data';
+graphobj.leg2 = ' 7d moving average';
+graphobj.leg3 = ' statistical model';
+graphobj.leg4 = ' 95% confidence   ';
 % ..........................................................
 
-
-
+% Figure 1 - prevalence
 % ..........................................................
-figure(1)
-fig1a = fill([time' fliplr(time')],...
-             [MyFit_C_env(:,2)' fliplr(MyFit_C_env(:,1)')],MyGray);
-hold on
-fig1b = plot(time,Data_C_raw  ,'o-m','LineWidth',1);
-fig1c = plot(time,Data_C_MA   ,'.-g','LineWidth',3);
-fig1d = plot(time,MyFit_C_pred,' -b','LineWidth',3);
-hold off
-set(fig1a,'DisplayName',label_env  );
-set(fig1b,'DisplayName',label_data );
-set(fig1c,'DisplayName',label_MA   );
-set(fig1d,'DisplayName',label_model);
-leg = [fig1b; fig1c; fig1d; fig1a];
-leg = legend(leg,'Location','Best');
-ylabel('total reported deaths');
-datetick('x',28,'keeplimits');
-xlim([DateStart DateEnd]); ylim([0 max(Cmax,max(MyFit_C_env(:,2)))]);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__C_vs_time_tau_',num2str(tau0)];
-saveas(gcf,gname,'epsc2');
+graphobj.gname = [num2str(case_name),'__C_vs_time_tau_',num2str(tau0)];
+graphobj.gtitle = '';
+graphobj.xmin   = DateStart;
+graphobj.xmax   = DateEnd;
+graphobj.ymin   = 0;
+graphobj.ymax   = 15e3;
+graphobj.xlab   = [];
+graphobj.ylab   = 'total reported deaths';
+graphobj.flag   = 'eps';
+
+fig1 = graph_C_1w(time,Data_C_raw,...
+                       Data_C_MA,...
+                       MyFit_C_env(:,2),...
+                       MyFit_C_env(:,1),...
+                       MyFit_C_pred,...
+                       graphobj);
 % ..........................................................
 
-
+                   
+% Figure 2 - incidence
 % ..........................................................
-figure(2)
-%ymax = max(Imax,max(MyFit_I_env(:,2)));
-ymax = 160;
-fig2a = fill([time' fliplr(time')],...
-             [MyFit_I_env(:,2)' fliplr(MyFit_I_env(:,1)')],MyGray);
-hold on
-fig2b = plot(time,Data_I_raw  ,'o-m','LineWidth',1);
-fig2c = plot(time,Data_I_MA   ,'.-g','LineWidth',3);
-fig2d = plot(time,MyFit_I_pred,' -b','LineWidth',3);
-fig2e = plot([tau_ast tau_ast],[0 0.85*ymax],'--k','LineWidth',2);
-hold off
-set(fig2a,'DisplayName',label_env  );
-set(fig2b,'DisplayName',label_data );
-set(fig2c,'DisplayName',label_MA   );
-set(fig2d,'DisplayName',label_model);
-leg = [fig2b; fig2c; fig2d; fig2a];
-leg = legend(leg,'Location','Best');
-ylabel('new reported deaths per day');
-datetick('x',28,'keeplimits');
-xlim([DateStart DateEnd]); ylim([0 ymax]);
-xpos = find(MyFit_I_env(:,1)>0,1)/length(time);
-ypos = 0.87;
-text(xpos,ypos, datestr(tau_ast), ...
-     'Units', 'normalized', ...
-     'HorizontalAlignment','left', ...
-     'VerticalAlignment'  ,'bottom',...
-     'FontSize', 16);
-set(leg,'FontSize',18);
-set(0,'DefaultAxesFontSize',18);
-gname = [num2str(case_name),'__I_vs_time_tau_',num2str(tau0)];
-saveas(gcf,gname,'epsc2');
+graphobj.gname  = [num2str(case_name),'__I_vs_time_tau_',num2str(tau0)];
+graphobj.gtitle = '';
+graphobj.xmin   = DateStart;
+graphobj.xmax   = DateEnd;
+graphobj.ymin   = 0;
+graphobj.ymax   = 160;
+graphobj.taux   = find(MyFit_I_env(:,1)>0,1)/length(time);
+graphobj.tauy   = 0.85;
+graphobj.tauh   = 'left';
+graphobj.xlab   = [];
+graphobj.ylab   = 'new reported deaths per day';
+graphobj.flag   = 'eps';
+
+fig2 = graph_I_1w(time,Data_I_raw,...
+                       Data_I_MA,...
+                       MyFit_I_env(:,2),...
+                       MyFit_I_env(:,1),...
+                       MyFit_I_pred,...
+                       tau_ast,...
+                       graphobj);
 % ..........................................................
 
 toc
