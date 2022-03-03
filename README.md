@@ -19,11 +19,11 @@ We ask the code users to cite the following manuscript in any publications repor
 @article{COVID19Waves2022,
    author  = {P. R. L. Gianfelice and R S Oyarzabal and A {Cunha~Jr} and J M V Grzybowsk and F C Batista and E E N Macau},
    title   = {The starting dates of COVID-19 multiple waves},
-   journal = {PrePrint},
+   journal = {Chaos},
    year    = {2022},
-   volume  = {~},
-   pages   = {~},
-   note    = {~},
+   volume  = {32},
+   pages   = {031101},
+   note    = {https://doi.org/10.1063/5.0079904},
 }
 ```
 
