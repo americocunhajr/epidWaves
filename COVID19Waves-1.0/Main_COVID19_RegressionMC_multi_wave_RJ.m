@@ -46,7 +46,7 @@ disp(' ---------------------------------------------------------- ')
 
 % simulation information
 % -----------------------------------------------------------
-case_name = 'COVID19_5th_wave_RJ';
+case_name = 'COVID19_multi_waves_RJ';
 
 disp(' '); 
 disp([' Case Name: ',num2str(case_name)]);
