@@ -1,5 +1,5 @@
 % -----------------------------------------------------------------
-%  Main_COVID19_RegressionMC_5th_wave_RJ.m
+%  Main_COVID19_RegressionMC_6th_wave_RJ.m
 % -----------------------------------------------------------------
 %  This program constructs a data-driven algebraic statistical 
 %  model to describe the evolution of COVID-19 notifications on 

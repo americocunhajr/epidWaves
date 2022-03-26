@@ -1,5 +1,5 @@
 % -----------------------------------------------------------------
-%  Main_COVID19_RegressionMC_5th_wave_RJ.m
+%  Main_COVID19_RegressionMC_multi_waves_RJ.m
 % -----------------------------------------------------------------
 %  This program constructs a data-driven algebraic statistical 
 %  model to describe the evolution of COVID-19 notifications on 
@@ -46,7 +46,7 @@ disp(' ---------------------------------------------------------- ')
 
 % simulation information
 % -----------------------------------------------------------
-case_name = 'COVID19_5th_wave_RJ';
+case_name = 'COVID19_multi_waves_RJ';
 
 disp(' '); 
 disp([' Case Name: ',num2str(case_name)]);
@@ -66,10 +66,8 @@ disp(' ');
 load('COVID19_Data_RJ_Jan_01_2020_to_Dec_31_2021.mat')
 
 % range of dates
-DateStart  = datenum('03-01-2021');
-DateEnd    = datenum('07-01-2021');
-TrainStart = datenum('05-01-2021');
-TrainEnd   = datenum('07-01-2021');
+DateStart = datenum('01-01-2020');
+DateEnd   = datenum('01-01-2022');
 
 % indices to access the dates
 % Jan 1, 2020 -   1   |   Jan 1, 2021 - 367
@@ -86,12 +84,12 @@ TrainEnd   = datenum('07-01-2021');
 % Dec 1, 2020 - 336   |   Dec 1, 2021 - 701
 
 % raw data start/end
-RawDataStart = 426;  % Mar 01, 2021
-RawDataEnd   = 548;  % Jul 01, 2021
+RawDataStart =   1;  % Jan 01, 2020
+RawDataEnd   = 731;  % Dec 31, 2021
 
 % training data start/end
-TrainDataStart = 487;  % May 01, 2021
-TrainDataEnd   = 548;  % Jul 01, 2021
+TrainDataStart = 122;  % Apr 01, 2020
+TrainDataEnd   = 701;  % Dec 01, 2021
 
 % new deaths per day (incidence)
 Data_I_raw = data_deaths(RawDataStart:RawDataEnd);
@@ -101,12 +99,6 @@ Data_C_raw = cumsum(Data_I_raw);
 
 % training data (incidence)
 Data_I_train = data_deaths(TrainDataStart:TrainDataEnd);
-
-% maximum value for the incidence curve
-[Imax,tImax] = max(Data_I_raw);
-
-% maximum value for the prevalence curve
-Cmax = max(Data_C_raw);
 
 % raw dataset size
 N_data = length(Data_I_raw);
@@ -161,41 +153,57 @@ disp(' ');
 % 3 - this choice is often trial and error game!
 % 4 - need to be changed for every new dataset!
 
-K0   = 2*Cmax;
-r0   = 0.05;%RegressionExp(time(1:30),Data_I_raw(1:30));
-tau0 = tImax;
+K0   = [ 9.70;  4.48;  6.54;  6.36;  8.11;  4.70]*1e3;
+r0   = [53.00; 27.00; 52.00; 65.00; 32.00; 51.00]*1e-3;
+tau0 = [  121;   268;   355;   465;   505;   608];
 
-% fixed model hyperparameter
-tau = 79;
+% starting dates of the epidemic waves
+tau_ast = [60; 188; 300; 416; 430; 545];
 
 % range of admissible values for model parameters
-HyperParam.lb = [0.5*K0; 0.10*r0];
-HyperParam.ub = [1.5*K0; 10.0*r0];
+HyperParam.lb = [0.5*K0; 0.10*r0; 0.9*tau0];
+HyperParam.ub = [1.5*K0; 10.0*r0; 1.1*tau0];
 
 % number of initial guesses to fit the model
 HyperParam.Ns = 30;
 
 % logistic model for total notifications
-MyModel_C = fittype( @(K,r,x) LogisticCDF(x,K,r,tau),'independent', 'x');
+MyModel_C = ...
+    fittype(@(K1,K2,K3,K4,K5,K6,r1,r2,r3,r4,r5,r6,tau1,tau2,tau3,tau4,tau5,tau6,x) ...
+            LogisticCDF6w(x,K1,K2,K3,K4,K5,K6,r1,r2,r3,r4,r5,r6,tau1,tau2,tau3,tau4,tau5,tau6),...
+            'independent', 'x');
 
 % logistic model for new notifications per day
-MyModel_I = fittype( @(K,r,x) LogisticPDF(x,K,r,tau),'independent', 'x');
+MyModel_I = ...
+    fittype(@(K1,K2,K3,K4,K5,K6,r1,r2,r3,r4,r5,r6,tau1,tau2,tau3,tau4,tau5,tau6,x) ...
+            LogisticPDF6w(x,K1,K2,K3,K4,K5,K6,r1,r2,r3,r4,r5,r6,tau1,tau2,tau3,tau4,tau5,tau6),...
+            'independent', 'x');
 
 % incidence curve fitting via Monte Carlo simulation
 [MyFit_I,ErrorObj_I] = RegressionMC(time_train,Data_I_train,...
-                                    MyModel_I,HyperParam)
-                           
+                                     MyModel_I,HyperParam)
+                                 
+MyFit_I.K1
+
 % prevalence curve fitting 
-MyFit_C = cfit(MyModel_C,MyFit_I.K,MyFit_I.r);
+MyFit_C = cfit(MyModel_C,...
+               MyFit_I.K1,MyFit_I.K2,MyFit_I.K3,MyFit_I.K4,MyFit_I.K5,MyFit_I.K6,...
+               MyFit_I.r1,MyFit_I.r2,MyFit_I.r3,MyFit_I.r4,MyFit_I.r5,MyFit_I.r6,...
+               MyFit_I.tau1,MyFit_I.tau2,MyFit_I.tau3,MyFit_I.tau4,MyFit_I.tau5,MyFit_I.tau6);
+           
+% incidence curve fitting 
+% MyFit_I = cfit(MyModel_I,...
+%                K0(1),K0(2),K0(3),K0(4),K0(5),...
+%                r0(1),r0(2),r0(3),r0(4),r0(5));
 
-% model PDF
-ModelPDF = @(x,p) LogisticPDF(x,p(1),p(2),tau);
-
-% initial guess for MLE estimator
-p0 = [MyFit_I.K; MyFit_I.r];
-
-% Akaike and Bayesian information criteria
-[AIC,BIC] = AkaikeBIC(ModelPDF,time_train,p0)
+% % model PDF
+% ModelPDF = @(x,p) LogisticPDF(x,p(1:Nw),p(Nw+1:2*Nw),tau0,Nw);
+% 
+% % initial guess for MLE estimator
+% p0 = [MyFit_I.K; MyFit_I.r];
+% 
+% % Akaike and Bayesian information criteria
+% [AIC,BIC] = AkaikeBIC(ModelPDF,time_train,p0)
 
 toc
 % -----------------------------------------------------------
@@ -221,7 +229,7 @@ MyFit_I_env = predint(MyFit_I,time,0.95,'observation','on'); %'functional' 'obse
 MyFit_C_env = cumsum(MyFit_I_env);
 
 % upper bound estimation for starting date
-tau_ast = DateStart + find(MyFit_I_env(:,1)>0,1);
+%tau_ast = DateStart + find(MyFit_I_env(:,1)>0,1);
 
 toc
 % -----------------------------------------------------------
@@ -240,56 +248,29 @@ disp(' ');
 
 % adjust time vector for date format
 % ..........................................................
-time       = linspace(DateStart,DateEnd,length(time))';
-time_train = linspace(TrainStart,TrainEnd,length(time_train))';
+time    = linspace(DateStart,DateEnd,length(time))';
+tau_ast = DateStart + tau_ast;
 % ..........................................................
 
 
-% legend labels
+% Figure 1 - incidence of deaths
 % ..........................................................
-graphobj.leg1 = ' surveillance data';
-graphobj.leg2 = ' 7d moving average';
-graphobj.leg3 = ' statistical model';
-graphobj.leg4 = ' 95% confidence   ';
-% ..........................................................
-
-% Figure 1 - prevalence
-% ..........................................................
-graphobj.gname = [num2str(case_name),'__C_vs_time_tau_',num2str(tau0)];
+graphobj.gname  = [num2str(case_name),'__I_vs_time_tau_6w'];
 graphobj.gtitle = '';
+graphobj.leg1   = ' surveillance data';
+graphobj.leg2   = ' 7d moving average';
+graphobj.leg3   = ' statistical model';
+graphobj.leg4   = ' 95% confidence   ';
 graphobj.xmin   = DateStart;
 graphobj.xmax   = DateEnd;
 graphobj.ymin   = 0;
-graphobj.ymax   = 15e3;
+graphobj.ymax   = 250;
+graphobj.tauy   = 0.7;
 graphobj.xlab   = [];
 graphobj.ylab   = 'total reported deaths';
 graphobj.flag   = 'eps';
 
-fig1 = graph_C_1w(time,Data_C_raw,...
-                       Data_C_MA,...
-                       MyFit_C_env(:,2),...
-                       MyFit_C_env(:,1),...
-                       MyFit_C_pred,...
-                       graphobj);
-% ..........................................................
-
-                   
-% Figure 2 - incidence
-% ..........................................................
-graphobj.gname  = [num2str(case_name),'__I_vs_time_tau_',num2str(tau0)];
-graphobj.gtitle = '';
-graphobj.xmin   = DateStart;
-graphobj.xmax   = DateEnd;
-graphobj.ymin   = 0;
-graphobj.ymax   = 160;
-graphobj.taux   = find(MyFit_I_env(:,1)>0,1)/length(time);
-graphobj.tauy   = 0.85;
-graphobj.tauh   = 'left';
-graphobj.xlab   = [];
-graphobj.ylab   = 'new reported deaths per day';
-graphobj.flag   = 'eps';
-
-fig2 = graph_I_1w(time,Data_I_raw,...
+fig1 = graph_I_6w(time,Data_I_raw,...
                        Data_I_MA,...
                        MyFit_I_env(:,2),...
                        MyFit_I_env(:,1),...
