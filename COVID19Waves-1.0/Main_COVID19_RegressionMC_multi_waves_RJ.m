@@ -255,7 +255,7 @@ tau_ast = DateStart + tau_ast;
 
 % Figure 1 - incidence of deaths
 % ..........................................................
-graphobj.gname  = [num2str(case_name),'__I_vs_time_tau_6w'];
+graphobj.gname  = [num2str(case_name),'__I_vs_time_6w'];
 graphobj.gtitle = '';
 graphobj.leg1   = ' surveillance data';
 graphobj.leg2   = ' 7d moving average';
