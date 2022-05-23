@@ -40,16 +40,14 @@ function [AIC,BIC] = AkaikeBIC(ModelPDF,data,p0)
     % number of parameters
     k = length(p0);
     
-    % log-likelihood function
-    LogLikelihood = @(p) sum(log(abs(ModelPDF(data,p))));
+    % log-likelihood function (negative to maximize)
+    LogLikelihood = @(p) (-1)*(sum(log(ModelPDF(data,p))));
     
     % solver optionals
-    opt = optimoptions(@fsolve,...
-                       'Algorithm','levenberg-marquardt',...
-                       'Display','off');
+    opt = optimoptions(@fminunc,'Algorithm','quasi-newton');
 
     % maximum likelihood estimator
-    p_mle = fsolve(LogLikelihood,p0,opt);
+    p_mle = fminunc(LogLikelihood,p0,opt);
     
     %  maximum log-likelihood value
     LL = LogLikelihood(p_mle);
