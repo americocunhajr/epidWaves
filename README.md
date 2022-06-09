@@ -1,8 +1,15 @@
-<img src="logo/COVID19Waves.png" width="40%">
+<img src="logo/mWaves.png" width="40%">
 
-**mWaves** repository stores a Matlab package that can be used to fit a multi-wave statistical model to the complex epidemic data. The repository also contains data referring to a case study involving the city of Rio de Janeiro in Brazil. More details in the following papers:
+**mWaves** is a Matlab/Python package to fit a multi-wave statistical model to the complex epidemic data. 
+
+## Software History
+
 - *A. Cunha Jr, F. C. Batista, P. R. L. Gianfelice, R. S. Oyarzabal, J. M. V. Grzybowsk, and E. E. N. Macau, mWaves: A code for fitting multi-wave epidemic models, 2022*
 - *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, Chaos, 32:031101, 2022 https://doi.org/10.1063/5.0079904*
+
+## Reproducibility
+
+Simulations done with **mWaves** are fully reproducible, as can be seen on this <a href="https://codeocean.com/capsule/8902979/tree" target="_blank">CodeOcean capsule</a>
 
 ## Authors
 - Americo Cunha Jr
@@ -12,8 +19,8 @@
 - Jose Mario Vicensi Grzybowsk
 - Elbert E. N. Macau
 
-## Citing this study
-We ask the code users to cite the following manuscripts in any publications reporting work done with our code:
+## Citing mWaves
+We ask users to cite the following manuscripts in any publications reporting work done with **mWaves**:
 - *A. Cunha Jr, F. C. Batista, P. R. L. Gianfelice, R. S. Oyarzabal, J. M. V. Grzybowsk, and E. E. N. Macau, mWaves: A code for fitting multi-wave epidemic models, 2022*
 - *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, Chaos, 32:031101, 2022 https://doi.org/10.1063/5.0079904*
 
