@@ -1,4 +1,4 @@
-<img src="logo/COVID19Waves.png" width="40%">
+<img src="logo/mWaves.png" width="40%">
 
 **mWaves** repository stores a Matlab package that can be used to fit a multi-wave statistical model to the complex epidemic data. The repository also contains data referring to a case study involving the city of Rio de Janeiro in Brazil. More details in the following papers:
 - *A. Cunha Jr, F. C. Batista, P. R. L. Gianfelice, R. S. Oyarzabal, J. M. V. Grzybowsk, and E. E. N. Macau, mWaves: A code for fitting multi-wave epidemic models, 2022*
