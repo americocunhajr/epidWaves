@@ -9,7 +9,7 @@
 
 ## Reproducibility
 
-Simulations done with **ARBO** are fully reproducible, as can be seen on this <a href="https://codeocean.com/capsule/8902979/tree" target="_blank">CodeOcean capsule</a>
+Simulations done with **mWaves** are fully reproducible, as can be seen on this <a href="https://codeocean.com/capsule/8902979/tree" target="_blank">CodeOcean capsule</a>
 
 ## Authors
 - Americo Cunha Jr
