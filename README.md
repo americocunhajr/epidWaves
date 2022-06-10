@@ -8,7 +8,7 @@ This package emerged from the combination of several codes used by authors in di
 
 - *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, Chaos, 32:031101, 2022 https://doi.org/10.1063/5.0079904*
 - *Pavlack et al., EPIDEMIC - Epidemiology Educational Code, Journal of Open Source Education, 5(50), 149, 2022 https://doi.org/10.21105/jose.00149*
-- 
+- F. Batista, A. Cunha Jr., Inferência dos Estágios Iniciais da COVID-19 em Portugal, In: XXIII Congresso Brasileiro de Automática (CBA 2020), 2020, Congresso Virtual, Brazil.
 
 ## Reproducibility
 
