@@ -9,7 +9,7 @@
 
 ## Reproducibility
 
-Simulations done with **epidWaves** are fully reproducible, as can be seen on this <a href="https://codeocean.com/capsule/8902979/tree" target="_blank">CodeOcean capsule</a>
+Curve fittings done with **epidWaves** in the Chaos paper are fully reproducible, as can be seen on this <a href="https://codeocean.com/capsule/8902979/tree" target="_blank">CodeOcean capsule</a>
 
 ## Authors
 - Americo Cunha Jr
