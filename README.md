@@ -1,6 +1,6 @@
 <img src="logo/epidWaves.png" width="40%">
 
-**epidWaves** is a Matlab/Python package to fit a multi-wave statistical model to the complex epidemic data. 
+**epidWaves** is a Matlab/Python package to fit multi-wave statistical models to the complex epidemic data. 
 
 ## Software History
 
