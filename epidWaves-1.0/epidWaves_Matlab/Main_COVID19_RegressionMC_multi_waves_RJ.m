@@ -182,8 +182,6 @@ MyModel_I = ...
 % incidence curve fitting via Monte Carlo simulation
 [MyFit_I,ErrorObj_I] = RegressionMC(time_train,Data_I_train,...
                                      MyModel_I,HyperParam)
-                                 
-MyFit_I.K1
 
 % prevalence curve fitting 
 MyFit_C = cfit(MyModel_C,...
@@ -195,15 +193,6 @@ MyFit_C = cfit(MyModel_C,...
 % MyFit_I = cfit(MyModel_I,...
 %                K0(1),K0(2),K0(3),K0(4),K0(5),...
 %                r0(1),r0(2),r0(3),r0(4),r0(5));
-
-% % model PDF
-% ModelPDF = @(x,p) LogisticPDF(x,p(1:Nw),p(Nw+1:2*Nw),tau0,Nw);
-% 
-% % initial guess for MLE estimator
-% p0 = [MyFit_I.K; MyFit_I.r];
-% 
-% % Akaike and Bayesian information criteria
-% [AIC,BIC] = AkaikeBIC(ModelPDF,time_train,p0)
 
 toc
 % -----------------------------------------------------------

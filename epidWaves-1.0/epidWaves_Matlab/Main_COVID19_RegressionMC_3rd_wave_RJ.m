@@ -189,7 +189,7 @@ MyModel_I = fittype( @(K,r,x) LogisticPDF(x,K,r,tau),'independent', 'x');
 MyFit_C = cfit(MyModel_C,MyFit_I.K,MyFit_I.r);
 
 % model PDF
-ModelPDF = @(x,p) LogisticPDF(x,p(1),p(2),tau);
+ModelPDF = @(x,p) LogisticPDF(x,p(1),p(2),tau)/p(1);
 
 % initial guess for MLE estimator
 p0 = [MyFit_I.K; MyFit_I.r];
