@@ -1,37 +1,59 @@
-## Welcome to GitHub Pages
+<img src="logo/epidWaves.png" width="40%">
 
-You can use the [editor on GitHub](https://github.com/americocunhajr/epidWaves/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+**epidWaves: A code for fitting multi-wave epidemic models** is a Matlab/Python package to fit multi-wave statistical models to the complex epidemic data. It is based on a parametric statistical framework that combines surveillance data, nonlinear regression, and information criteria to obtain a statistical model capable of describing multi-wave epidemic outbreaks.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Software History
 
-### Markdown
+This package emerged from the combination of several codes used by authors in different publications:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, Chaos, 32:031101, 2022 https://doi.org/10.1063/5.0079904*
+- *Pavlack et al., EPIDEMIC - Epidemiology Educational Code, Journal of Open Source Education, 5(50), 149, 2022 https://doi.org/10.21105/jose.00149*
+- F. Batista, A. Cunha Jr., Inferência dos Estágios Iniciais da COVID-19 em Portugal, In: XXIII Congresso Brasileiro de Automática (CBA 2020), 2020, Congresso Virtual, Brazil.
 
-```markdown
-Syntax highlighted code block
+## Reproducibility
 
-# Header 1
-## Header 2
-### Header 3
+Curve fittings done with **epidWaves** in the Chaos paper are fully reproducible, as can be seen on this <a href="https://codeocean.com/capsule/8902979/tree" target="_blank">CodeOcean capsule</a>
 
-- Bulleted
-- List
+## Authors
+- Americo Cunha Jr
+- Fernando da Conceição Batista
+- Paulo Roberto de Lima Gianfelice
+- Ricardo Sovek Oyarzabal
+- Jose Mario Vicensi Grzybowsk
+- Elbert E. N. Macau
 
-1. Numbered
-2. List
+## Citing epidWaves
+We ask users to cite the following manuscripts in any publications reporting work done with **epidWaves**:
+- *A. Cunha Jr, F. C. Batista, P. R. L. Gianfelice, R. S. Oyarzabal, J. M. V. Grzybowsk, and E. E. N. Macau, epidWaves: A code for fitting multi-wave epidemic models, 2022*
+- *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, Chaos, 32:031101, 2022 https://doi.org/10.1063/5.0079904*
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+@article{epidWaves2022,
+   author  = {A {Cunha~Jr} and F C Batista and P. R. L. Gianfelice and R S Oyarzabal and J M V Grzybowsk and E E N Macau},
+   title   = {epidWaves: A code for fitting multi-wave epidemic models},
+   journal = {~},
+   year    = {2022},
+   volume  = {~},
+   pages   = {~},
+   note    = {~},
+}
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+```
+@article{COVID19Waves2022,
+   author  = {P. R. L. Gianfelice and R S Oyarzabal and A {Cunha~Jr} and J M V Grzybowsk and F C Batista and E E N Macau},
+   title   = {The starting dates of COVID-19 multiple waves},
+   journal = {Chaos},
+   year    = {2022},
+   volume  = {32},
+   pages   = {031101},
+   note    = {https://doi.org/10.1063/5.0079904},
+}
+```
 
-### Jekyll Themes
+## License
+**epidWaves** is released under the MIT license. See the LICENSE file for details. All new contributions must be made under the MIT license.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/americocunhajr/epidWaves/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Funding
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+<img src="logo/cnpq.png" width="20%"> &nbsp; &nbsp; <img src="logo/capes.png" width="10%">  &nbsp; &nbsp; <img src="logo/fapesp.png" width="20%"> &nbsp; &nbsp; <img src="logo/faperj.jpg" width="20%">
