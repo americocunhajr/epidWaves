@@ -31,7 +31,7 @@ We ask users to cite the following manuscripts in any publications reporting wor
 @article{epidWaves2022,
    author  = {A {Cunha~Jr} and F C Batista and P. R. L. Gianfelice and R S Oyarzabal and J M V Grzybowsk and E E N Macau},
    title   = {epidWaves: A code for fitting multi-wave epidemic models},
-   journal = {~},
+   journal = {Software Impacts},
    year    = {2022},
    volume  = {~},
    pages   = {~},
