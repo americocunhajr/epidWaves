@@ -33,9 +33,9 @@ We ask users to cite the following manuscripts in any publications reporting wor
    title   = {epidWaves: A code for fitting multi-wave epidemic models},
    journal = {Software Impacts},
    year    = {2022},
-   volume  = {~},
+   volume  = {in press},
    pages   = {~},
-   note    = {~},
+   note    = {https://doi.org/10.1016/j.simpa.2022.100391},
 }
 ```
 
