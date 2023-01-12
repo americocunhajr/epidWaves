@@ -24,7 +24,7 @@ Curve fittings done with **epidWaves** in the Chaos paper are fully reproducible
 
 ## Citing epidWaves
 We ask users to cite the following manuscripts in any publications reporting work done with **epidWaves**:
-- *A. Cunha Jr, F. C. Batista, P. R. L. Gianfelice, R. S. Oyarzabal, J. M. V. Grzybowsk, and E. E. N. Macau, epidWaves: A code for fitting multi-wave epidemic models, 2022*
+- *A. Cunha Jr, F. C. Batista, P. R. L. Gianfelice, R. S. Oyarzabal, J. M. V. Grzybowsk, and E. E. N. Macau, epidWaves: A code for fitting multi-wave epidemic models, 14:100391, 2022 https://doi.org/10.1016/j.simpa.2022.100391*
 - *P. R. L. Gianfelice, R. S. Oyarzabal, A. Cunha Jr, J. M. V. Grzybowsk, F. C. Batista, and E. E. N. Macau, The starting dates of COVID-19 multiple waves, Chaos, 32:031101, 2022 https://doi.org/10.1063/5.0079904*
 
 ```
@@ -33,8 +33,8 @@ We ask users to cite the following manuscripts in any publications reporting wor
    title   = {epidWaves: A code for fitting multi-wave epidemic models},
    journal = {Software Impacts},
    year    = {2022},
-   volume  = {in press},
-   pages   = {~},
+   volume  = {14},
+   pages   = {100391},
    note    = {https://doi.org/10.1016/j.simpa.2022.100391},
 }
 ```
