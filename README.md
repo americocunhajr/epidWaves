@@ -58,7 +58,7 @@ We ask users to cite the following manuscripts in any publications reporting wor
 
 ## Institutional support
 
-<img src="logo/logo_uerj_color.jpeg" width="10%"> &nbsp; &nbsp; <img src="logo/logo_ipl_color.png" width="25%"> &nbsp; &nbsp; <img src="logo/logo_ufesp_color.jpg" width="10%"> &nbsp; &nbsp;  <img src="logo/logo_uffs_color.png" width="20%">
+<img src="logo/logo_uerj_color.jpeg" width="10%"> &nbsp; &nbsp; <img src="logo/logo_ipl.png" width="35%"> &nbsp; &nbsp; <img src="logo/logo_unifesp_color.png" width="15%"> &nbsp; &nbsp;  <img src="logo/logo_uffs_color.png" width="25%">
 
 ## Funding
 
