@@ -54,6 +54,12 @@ We ask users to cite the following manuscripts in any publications reporting wor
 ## License
 **epidWaves** is released under the MIT license. See the LICENSE file for details. All new contributions must be made under the MIT license.
 
+<img src="logo/mit_license_red.png" width="10%"> 
+
+## Institutional support
+
+<img src="logo/logo_uerj_color.jpeg" width="10%"> &nbsp; &nbsp; <img src="logo/logo_ipl_color.png" width="25%"> &nbsp; &nbsp; <img src="logo/logo_ufesp_color.jpg" width="10%"> &nbsp; &nbsp;  <img src="logo/logo_uffs_color.png" width="20%">
+
 ## Funding
 
 <img src="logo/cnpq.png" width="20%"> &nbsp; &nbsp; <img src="logo/capes.png" width="10%">  &nbsp; &nbsp; <img src="logo/fapesp.png" width="20%"> &nbsp; &nbsp; <img src="logo/faperj.jpg" width="20%">
