@@ -40,7 +40,7 @@ We ask users to cite the following manuscripts in any publications reporting wor
 ```
 
 ```
-@article{COVID19Waves2022,
+@article{Gianfelice2022p031101,
    author  = {P. R. L. Gianfelice and R S Oyarzabal and A {Cunha~Jr} and J M V Grzybowsk and F C Batista and E E N Macau},
    title   = {The starting dates of COVID-19 multiple waves},
    journal = {Chaos},
