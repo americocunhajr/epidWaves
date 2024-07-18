@@ -46,6 +46,10 @@ To get started with **epidWaves**, follow these steps:
    ```bash
    cd epidWaves/epidWaves-1.0/epidWaves_Matlab
    ```
+3. For regression on epidemic wave xxx, execute:
+   ```bash
+   Main_COVID19_RegressionMC_xxx_wave_RJ
+   ```
 
 #### Python
 1. Clone the repository:
@@ -55,6 +59,10 @@ To get started with **epidWaves**, follow these steps:
 2. Navigate to the code directory:
    ```bash
    cd epidWaves/epidWaves-1.0/epidWaves_Python
+   ```
+3. For regression on epidemic wave xxx, execute:
+   ```bash
+   python Main_COVID19_RegressionMC_xxx_wave_RJ.py
    ```
 
 ### Documentation
