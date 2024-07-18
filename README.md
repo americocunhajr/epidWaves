@@ -34,24 +34,24 @@ We ask users to cite the following manuscripts in any publications reporting wor
 ```
 @article{epidWaves2022,
    author  = {A {Cunha~Jr} and F C Batista and P. R. L. Gianfelice and R S Oyarzabal and J M V Grzybowsk and E E N Macau},
-   title   = {epidWaves: A code for fitting multi-wave epidemic models},
+   title   = "{epidWaves: A code for fitting multi-wave epidemic models}",
    journal = {Software Impacts},
    year    = {2022},
    volume  = {14},
    pages   = {100391},
-   note    = {https://doi.org/10.1016/j.simpa.2022.100391},
+   note    = {10.1016/j.simpa.2022.100391},
 }
 ```
 
 ```
 @article{Gianfelice2022p031101,
    author  = {P. R. L. Gianfelice and R S Oyarzabal and A {Cunha~Jr} and J M V Grzybowsk and F C Batista and E E N Macau},
-   title   = {The starting dates of COVID-19 multiple waves},
+   title   = {The starting dates of {COVID-19} multiple waves},
    journal = {Chaos},
    year    = {2022},
    volume  = {32},
    pages   = {031101},
-   note    = {https://doi.org/10.1063/5.0079904},
+   note    = {10.1063/5.0079904},
 }
 ```
 
