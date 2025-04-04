@@ -115,8 +115,8 @@ If you use **epidWaves** in your research, please cite the following manuscripts
 
 ### Institutional support
 
-<img src="logo/logo_uerj_color.jpeg" width="10%"> &nbsp; &nbsp; <img src="logo/logo_ipl.png" width="35%"> &nbsp; &nbsp; <img src="logo/logo_unifesp_color.png" width="15%"> &nbsp; &nbsp;  <img src="logo/logo_uffs_color.png" width="25%">
+<img src="logo/logo_uerj.png" width="13%"> &nbsp; &nbsp; <img src="logo/logo_ipl.png" width="35%"> &nbsp; &nbsp; <img src="logo/logo_unifesp_color.png" width="15%"> &nbsp; &nbsp;  <img src="logo/logo_uffs_color.png" width="25%">
 
 ### Funding
 
-<img src="logo/cnpq.png" width="20%"> &nbsp; &nbsp; <img src="logo/capes.png" width="10%">  &nbsp; &nbsp; <img src="logo/fapesp.png" width="20%"> &nbsp; &nbsp; <img src="logo/faperj.jpg" width="20%">
+<img src="logo/cnpq.png" width="20%"> &nbsp; &nbsp; <img src="logo/capes.png" width="10%">  &nbsp; &nbsp; <img src="logo/fapesp.png" width="20%"> &nbsp; &nbsp; <img src="logo/faperj.png" width="20%">
